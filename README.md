@@ -11,7 +11,7 @@
 
 
 **Description:**
-
+This report summarizes the model's accuracy through three metrics: Precision (avoiding false positives), Recall (finding all true samples), and the F1-Score (the balance of both). It highlights which specific plant species the model identifies with high confidence and where it tends to fail, such as the near-perfect scores for Anthurium compared to lower scores for more generic-looking leaves.
 
 ---
 
@@ -20,7 +20,7 @@
 
 
 **Description:**
-
+The matrix provides a visual map of the model's errors by plotting true labels against predicted labels. The bright diagonal line represents successful matches, while any values outside that line pinpoint exactly which plants are being mistaken for one another. This is crucial for identifying if two different species are visually too similar for the current CNN architecture to distinguish.
 
 ---
 
@@ -29,7 +29,7 @@
 
 
 **Description:**
-
+The ROC curve illustrates the diagnostic ability of the classifier by plotting the true positive rate against the false positive rate. The AUC (Area Under the Curve) score of 0.95 acts as a single grade for the model’s overall quality. A score this close to 1.0 indicates a highly effective model that can reliably separate different plant categories even under varying conditions.
 
 ---
 
@@ -38,7 +38,7 @@
 
 
 **Description:**
-
+This bar chart translates the complex numerical table of the classification report into an easy-to-read visual comparison. By looking at the height of the colored bars for each plant, you can instantly identify the "strong" classes that the model has mastered and the "weak" classes that require more data or further optimization to improve performance.
 
 ---
 
