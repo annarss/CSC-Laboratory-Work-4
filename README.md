@@ -1,6 +1,7 @@
 # Laboratory Work 4 Activity 1 — Improving CNN Performance Using Regularization, Fine-Tuning, and Advanced Evaluation
 
 # DRIVE LINK
+https://drive.google.com/drive/folders/1g-Vgu4Yj6xixsyCDvRQ-L7J9eWEpkQhd?usp=sharing
 
 ---
 
