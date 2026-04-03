@@ -120,8 +120,7 @@ This visualization shows that while top-tier scores dropped by roughly 15%, the 
 ---
 
 ### Compare Results (Before vs After)
-<img width="330" height="144" alt="image" src="https://github.com/user-attachments/assets/7cb155b6-035d-4a47-a580-3c72eed62ca5" />
-
+<img width="368" height="153" alt="image" src="https://github.com/user-attachments/assets/1aa5d71f-c399-461a-9897-3ee0ff072fef" />
 
 
 **Description:**
