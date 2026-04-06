@@ -12,7 +12,7 @@ https://drive.google.com/drive/folders/1g-Vgu4Yj6xixsyCDvRQ-L7J9eWEpkQhd?usp=sha
 
 
 **Description:**
-This report summarizes the model's accuracy through three metrics: Precision (avoiding false positives), Recall (finding all true samples), and the F1-Score (the balance of both). It highlights which specific plant species the model identifies with high confidence and where it tends to fail, such as the near-perfect scores for Anthurium compared to lower scores for more generic-looking leaves.
+This report summarizes how well the model recognized each of the 20 plant species using three metrics: Precision (how often the prediction was correct), Recall (how many actual plants were correctly found), and F1-Score (the balance of both). It highlights which plants the model identifies with high confidence and where it struggles — like the perfect scores for boston fern and near-perfect results for caladium and anthurium red champion, compared to the much lower scores for philodendron xanadu and alocasia which are harder to distinguish because they look similar to other plants in the dataset.
 
 ---
 
