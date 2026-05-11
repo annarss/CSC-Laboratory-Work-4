@@ -8,45 +8,47 @@ https://drive.google.com/drive/folders/1g-Vgu4Yj6xixsyCDvRQ-L7J9eWEpkQhd?usp=sha
 # Activity 1: Evaluation Metrics + Visualization
 
 ### Classification Report
-<img width="505" height="430" alt="image" src="https://github.com/user-attachments/assets/6a24b576-75cb-485b-a0b2-ee7a8e4dafd1" />
-
+<img width="472" height="413" alt="image" src="https://github.com/user-attachments/assets/ea72664e-af66-497d-9516-e20bc361b61c" />
 
 
 
 **Description:**
-This report summarizes how well the model recognized each of the 20 plant species using three metrics: Precision (how often the prediction was correct), Recall (how many actual plants were correctly found), and F1-Score (the balance of both). It highlights which plants the model identifies with high confidence and where it struggles — like the perfect scores for boston fern and near-perfect results for caladium and anthurium red champion, compared to the much lower scores for philodendron xanadu and alocasia which are harder to distinguish because they look similar to other plants in the dataset.
+This report shows how well the model classified each plant species using Precision, Recall, and F1-score. It highlights strong results for plants like boston_fern (bostoniensis) with perfect scores and high performance for anthurium_red_champion and snake_plant, while plants such as alocasia and fiddle_leaf_fig had lower scores because they are harder to distinguish from similar species.
 
 ---
 
 ### 2. Confusion Matrix
-<img width="717" height="629" alt="image" src="https://github.com/user-attachments/assets/51561873-feab-4dbc-aee4-b84c8f63f06c" />
-
+<img width="731" height="684" alt="image" src="https://github.com/user-attachments/assets/c0dfda43-a693-4a05-b711-5868a2de238a" />
 
 
 
 **Description:**
-The matrix provides a visual map of the model's errors by plotting true labels against predicted labels. The bright diagonal line represents successful matches, while any values outside that line pinpoint exactly which plants are being mistaken for one another. This is crucial for identifying if two different species are visually too similar for the current CNN architecture to distinguish.
+The matrix provides a visual map of the LW3 Baseline model's errors by plotting actual plant species against the model's predictions. The dark blue diagonal line represents successful matches, such as the high accuracy seen for the ZZ plant. Any values outside that line pinpoint exactly which species are being mistaken for one another, such as the confusion between the Croton Petra and Croton Mammy. This is crucial for identifying if certain plants are visually too similar for the current CNN architecture to distinguish.
 
 ---
 
 ### 3. (ROC) Curve and Area Under the Curve (AUC) Score
-<img width="999" height="755" alt="image" src="https://github.com/user-attachments/assets/ea845bc5-81b1-4ef9-9605-af26dcd2b5e5" />
+<img width="1008" height="692" alt="image" src="https://github.com/user-attachments/assets/5e9a9f4e-5805-475e-9ab1-37a9c0366d17" />
+
 
 
 
 
 **Description:**
-The ROC curve shows how well the model can tell each plant apart from the others by comparing true positive rate against false positive rate. The closer a line is to the top left corner, the better that class is being recognized. Most plants scored very high — boston fern and snake plant achieved a perfect AUC of 1.00, and antharium red champion reached 0.99. The weakest were fiddle leaf fig at 0.87 and philodendron xanadu at 0.84, which matches the classification report where these plants also struggled. The overall AUC score of 0.9528 means the model is very reliable at distinguishing between the 20 plant species even when individual predictions are sometimes wrong.
+
+The ROC curve illustrates the LW3 Baseline model's ability to distinguish each plant species by plotting the true positive rate against the false positive rate. The closer a line hugs the top-left corner, the better the model performs for that class. Most plants scored exceptionally high, with the snake plant, boston fern, and anthurium red champion achieving perfect AUC scores of 1.00. The relatively lower performance of the areca palm (0.91) and fiddle leaf fig (0.92) highlights where the model faces the most difficulty. The overall AUC score of 0.9734 indicates the model is highly reliable at distinguishing between the 20 plant species, even if specific individual predictions occasionally falter.
 
 ---
 
 ### 4. Precision, Recall, F1-score per Class
-<img width="1169" height="573" alt="image" src="https://github.com/user-attachments/assets/8610fc40-62a1-4ae7-8da3-2c8b245bbcb2" />
+<img width="1076" height="415" alt="image" src="https://github.com/user-attachments/assets/e1d14ea1-85ed-49ca-a0dd-a26857c8beb6" />
+
 
 
 
 **Description:**
-The bar graph displays the Precision, Recall, and F1-score metrics for all the 20 plant species. Boston fern and caladium got close-to-perfect results, whereas philodendron xanadu, alocasia, and areca palm received the worst marks, probably due to their similarity with other plant types. In general, the model achieved good results, with 0.79 precision, 0.77 recall, 0.77 F1-score, and AUC of 0.9528.
+
+The bar graph displays the Precision, Recall, and F1-score metrics for all 20 plant species in the baseline model. The Boston fern stands out with perfect scores across all metrics, while species like areca palm, fiddle leaf fig, and philodendron xanadu received the lowest marks, likely due to their visual similarities with other plants in the dataset. In general, the model achieved solid results, as evidenced by an overall Precision of 0.79, Recall of 0.77, and F1-score of 0.77, supported by a high AUC of 0.9734.
 
 ---
 
@@ -83,64 +85,53 @@ Grad-CAM represents the process used by the neural network in deciding how to cl
 
 
 ### 7. Train Improved Model (using 20 epochs)
-<img width="765" height="585" alt="image" src="https://github.com/user-attachments/assets/523061f7-7fdb-4334-a474-f0d13c12ace3" />
-
+<img width="1097" height="668" alt="image" src="https://github.com/user-attachments/assets/57179c9e-4055-4b76-a335-a86718d40009" />
+<img width="1102" height="428" alt="image" src="https://github.com/user-attachments/assets/7d6c5b83-7019-4e6d-8fb3-38ff6f585fc3" />
 
 
 **Description:**
-The improved model was trained for 20 epochs with steady improvement observed through all 20 epochs. It achieved extremely poor accuracy of 22.27% and high loss of 2.97 at Epoch 1, but steadily kept improving its performance until achieving the accuracy of 55.66% and validation accuracy of 70.50% at the final Epoch 20. It is important to note that the validation accuracy remains better compared to the training accuracy, showing that the model is well-generalized and not prone to overfitting, due to dropout layers and data augmentation.
+The training logs show the model's progression over 30 epochs, demonstrating consistent improvement. While the model started with a very low accuracy of 27.18% and a high loss of 2.66 at Epoch 1, it steadily refined its performance throughout the session. By the final Epoch 30, the model achieved a training accuracy of 92.18% and a validation accuracy of 88.99%. The close alignment between training and validation metrics indicates that the model is well-generalized and not suffering from significant overfitting, likely thanks to the implementation of dropout layers and data augmentation.
 
 ---
 
 ### 8. Improved Classification Report
-<img width="499" height="428" alt="image" src="https://github.com/user-attachments/assets/d8b9423f-c216-4fa3-a03e-948c7510f228" />
-
+<img width="553" height="408" alt="image" src="https://github.com/user-attachments/assets/42040066-ce08-4d01-b2ec-f52038183242" />
 
 
 **Description:**
-In this report on classification, we see the results obtained with the enhanced version of our model, where such components as BatchNormalization, enhanced augmentation, and larger dropouts were added. Overall, there was only a slight decrease in accuracy in comparison with the baseline model from 77% to 71%. Similarly, there was a minor change in the macro-average F1-score from 0.77 to 0.70. On the one hand, the performance on certain classes became more balanced, with caladium and boston fern performing well, while areca palm and fiddle leaf fig lagged behind. However, this is an expected result, considering that stronger regularization made the model less liberal.
+The classification report for the LW4 Improved CNN showcases the impact of adding BatchNormalization, enhanced augmentation, and larger dropouts. Overall, the model achieved a significant increase in performance compared to the baseline, reaching an accuracy of 0.89. The macro-average F1-score also improved to 0.89, indicating a much more robust model. While most classes like the Boston fern and Caladium achieved near-perfect results, others like the Areca palm (0.71 F1-score) and Fiddle leaf fig (0.70 F1-score) still lag slightly behind. This improved balance across the board suggests that the stronger regularization has successfully helped the model generalize better across the 20 plant species.
 
 ---
 
 ### 9. Improved Confusion Matrix
-<img width="748" height="639" alt="image" src="https://github.com/user-attachments/assets/33f5c685-3adc-4ddf-a82a-1177fd633898" />
+<img width="747" height="682" alt="image" src="https://github.com/user-attachments/assets/d9c42118-5188-473f-90fb-09c52b4d2f25" />
 
 
 
 **Description:**
-The confusion matrix reveals that the enhanced model was able to recognize the majority of the plants, including a perfect score for the boston fern as well as strong performance from anthurium, chlorophytum, and zz plant. Confusion mainly arises because croton(mammy) is similar to croton(petra). There is a more uniform distribution of errors across all classes as opposed to just some problematic plants like before.
+The confusion matrix for the LW4 Improved CNN reveals that the enhanced model significantly increased its accuracy, correctly identifying the majority of species. This is evidenced by the much cleaner, darker diagonal line, with the boston fern, anthurium, and zz plant achieving near-perfect or perfect scores. While some confusion remains between visually similar species like croton(mammy) and croton(petra), the errors are now much more localized and less frequent. Compared to the baseline, this model demonstrates a far more uniform and reliable ability to distinguish between the 20 plant classes.
 
 ---
 
 ### 10. Improved (ROC) Curve and Area Under the Curve (AUC) Score
-<img width="748" height="508" alt="image" src="https://github.com/user-attachments/assets/1ccb4480-8760-43f5-9588-66f2e9681c3d" />
-
+<img width="1035" height="688" alt="image" src="https://github.com/user-attachments/assets/ec91fe3a-dbfd-4b9a-a133-75bc8db936ec" />
 
 
 **Description:**
-The improved model's ROC curve shows an overall AUC of 0.9051, slightly lower than the baseline's 0.9528. Boston fern still achieved a perfect 1.00 while alocasia dropped to 0.79 and philodendron xanadu to 0.80 — the weakest performers. Compared to the baseline, the curves are slightly less steep meaning the model trades some discriminative ability for better generalization, which is the expected result of applying stronger regularization and augmentation.
+The ROC curve for the LW4 Improved CNN shows an exceptional overall AUC of 0.9933, which is a significant jump from the baseline performance. Most classes, including the boston fern, alocasia, and snake plant, achieved a perfect AUC of 1.00, meaning the model can distinguish them with near-perfect accuracy. Even the lowest-performing species, such as the areca palm (0.97), show much higher discriminative power than in the previous model. The fact that the curves are packed tightly in the top-left corner indicates that the improved architecture and regularization have made the model much more reliable at separating these 20 plant categories.
 
 
 
 ---
 
 ### Compare Results (Before vs After)
-<img width="288" height="120" alt="image" src="https://github.com/user-attachments/assets/5e3b71dd-b0ee-4fe1-a1f0-04d4671fd9ad" />
+<img width="520" height="262" alt="image" src="https://github.com/user-attachments/assets/669e3ea4-cdb2-4a72-b1fb-9ab540ff603e" />
 
-
-
-**Description:**
-The comparison table shows the improved model achieved a validation accuracy of 70.50% which is actually higher than its training accuracy of 55.66% — a strong sign of good generalization with zero overfitting. While the baseline had slightly higher precision, recall, F1, and AUC scores, it was heavily with a 21% gap between training and validation accuracy. The improved model sacrificed some raw performance numbers in exchange for a much healthier and more reliable model that performs consistently on new unseen data, which is more valuable in real-world use.
-
----
-
-### 11. Visualization of Improvement
-<img width="755" height="325" alt="image" src="https://github.com/user-attachments/assets/1c3cb314-ce2f-4084-b8f4-3e3cb54457fa" />
 
 
 
 **Description:**
-From the Accuracy plot, we can see that the validation accuracy remains higher than the training accuracy at all times during all the 20 epochs, which is excellent news since it shows that our model has excellent generalization power without being overfitted. From the Loss plot, we can observe that initially, the validation loss was highly erratic, rising up to almost 12 in the initial epochs because of the new augmentation, but then it became consistent, with the training and validation losses going down simultaneously.
+The comparison table highlights the significant leap in performance for the LW4 Improved model across every key metric. Unlike the baseline, which had a validation accuracy of 76.40%, the improved model reached 88.99%. Furthermore, the improved model achieved a high F1-Score of 0.8889 and an AUC Score of 0.9933, outperforming the baseline in both precision and reliability. With a Generalization Gap of only 3.20%, the model demonstrates a "Good Fit," proving that the addition of regularization and better data augmentation created a far more robust system that maintains high accuracy on unseen data without the risk of overfitting.
 
 ---
 
@@ -149,52 +140,54 @@ From the Accuracy plot, we can see that the validation accuracy remains higher t
 **A. Model Evaluation Analysis**
 
 **1. What were the weakest-performing classes based on the confusion matrix?**<br>
-From the classification report, the poorest-performing classes are those of philodendron_xanadu, with a precision of 44% and an F1-score of 56%, alocasia, with a precision of 57% and an F1-score of 62%, and areca_palm, with a precision of 57% and an F1-score of 60%.
+Based on the confusion matrix, the weakest classes are the ones that had a lot of wrong predictions. You can see it clearly because the numbers outside the diagonal are high, which means the model kept predicting those images as a different class. These are the classes the model had the hardest time recognizing correctly.
 
 **2. How did Precision, Recall, and F1-score vary across classes?**<br>
-The disparity between the top-performing groups and those that underperformed was huge. Boston fern was the highest, scoring perfect marks of 1.00 for each of the measures, followed by caladium with 0.97-0.98, and anthurium red champion with 0.96. In the bottom bracket, philodendron xanadu had a precision of just 0.44 while alocasia registered a precision of 0.57.
+Not all classes got the same scores. Some classes had really high precision and recall, which means the model was good at identifying them. But some classes got lower scores, probably because they look similar to other classes and the model got confused. The bar graph I made showed clearly which classes performed well and which ones didn't.
+
 
 **3. What does a low recall indicate in your model?** <br>
-If the recall value is low, this means that the model missed true cases of the particular class, meaning it did not recognize all of the true corn plant examples. Corn_plant had a recall of 0.68, which means that the model incorrectly recognized around 32% of the true cases. In an app used for identifying plants, the user who has a corn plant will most likely receive a wrong output about one-third of the time.
+Low recall means the model is missing a lot of images from that class. Like, even if the image is actually a cat, the model is classifying it as something else. So basically the model is not detecting that class well enough.
 
 **4. How does AUC score reflect model performance compared to accuracy?** <br>
-While our initial model had 77% accuracy and an AUC of 0.9528, which was extremely high compared to the former, it was important to take into consideration the fact that AUC gives us more information about the performance of the model than accuracy, because unlike the latter, AUC shows us the quality of ranking of the true classes above other classes, regardless of whether the final decision on which one is correct was made accurately.
+Accuracy just tells you how many predictions were correct. But AUC is more detailed because it shows how well the model can separate the classes from each other. Even if the accuracy looks okay, the AUC can reveal if the model is struggling. A higher AUC means the model is doing a better job overall, so it's a more reliable metric than just accuracy alone.
 
 **B. Model Improvement**
 
 **5. How did data augmentation affect validation accuracy?** <br>
-The new version of the model had more robust data augmentation techniques such as horizontal and vertical flipping, rotation by 20%, zooming by 20%, and contrast change. The training outcomes show that the model’s accuracy rose from 14.75% at Epoch 1 to 70.50% at Epoch 20. Data augmentation initially slowed down the training process, making it difficult for the model, but eventually, it benefited the entire learning process up to Epoch 20.
+Data augmentation helped a lot because the model got to see different versions of the same image during training, like flipped or rotated versions. So instead of just memorizing the training images, the model learned more general features. This made it perform better on the validation data, which is why the validation accuracy improved.
 
 **6. Why is Batch Normalization important in CNNs?** <br>
-Batch normalization helps normalize the output from each layer so that the output does not become excessively large or small. In the modified model, batch normalization is included after each Conv2D layer. It helped stabilize the training process, allowing us to observe consistent improvements from epoch to epoch instead of stagnation or instability. Without it, the excessively high validation loss of 8.23 recorded in Epoch 1 would have been able to destabilize training.
+Batch Normalization is important because it keeps the values inside the layers stable while training. Without it, training can become unstable or really slow. It also helps the model generalize better, so it's not just good at the training data but also on new images it hasn't seen before.
+
 
 **7. What role did Dropout play in improving your model?** <br>
-Two dropout layers were employed during the design of the architecture; 0.4 was used immediately after the convolutional layers and 0.5 was applied to the Dense(256). This ensured that there would be no over-reliance on certain neurons during the training process. In terms of performance, the training accuracy was 55.66% for epoch 20, whereas the validation accuracy was 70.50%, indicating that the higher validation accuracy than the training accuracy suggested effective use of dropout.
+Dropout randomly turns off some neurons during training so the model doesn't rely too much on specific neurons. This prevents the model from just memorizing the training data. In our model we used 0.4 dropout, which helped reduce overfitting and made the model perform more consistently on validation data.
 
 **8. How did Early Stopping prevent overfitting?**<br>
-Early stopping monitored the validation loss with patience 3, which means the training process would be stopped if there was no improvement in the validation loss for three continuous epochs. Our result indicated that our model trained for all the 20 epochs since the validation loss improved continuously throughout the entire training process. Without the early stopping technique, the model could train beyond its optimal point even if it had overfitted.
- 
+Early Stopping monitors the validation accuracy while training. If it doesn't improve after a certain number of epochs (we set patience to 6), it automatically stops training and brings back the best weights. This way the model doesn't overtrain on the training data and stays generalizable.
+
 **C. Performance Comparison**
 
 **9. What improvements were observed after modifying the model?**<br>
-Strangely enough, the modified model performed worse on some parameters compared to the baseline. In terms of validation accuracy, the baseline obtained 77% whereas the improved one reached only 70.50%. In terms of precision, the baseline was 0.7935 while the improved model was 0.7129. Nevertheless, what the improved model demonstrates is a more balanced approach during the training process, with the training accuracy being 55.66% and validation accuracy 70.50%, which makes overfitting impossible.
+After we applied the improvements, the validation accuracy went up and the loss went down compared to the baseline model. The precision, recall, F1-score, and AUC score also improved. Overall the improved model was better at correctly classifying images and didn't overfit as much as before..
 
 **10. Which enhancement contributed the most to performance improvement? Why?**<br>
-The most valuable contribution was Batch Normalization due to its stabilization of the model for the whole duration of 20 epochs. The reason behind it was that without Batch Normalization, the validation loss value of Epoch 1 was 8.23 which is highly unstable. Another contributing factor was lowering the learning rate to 0.0001.
+I think data augmentation contributed the most because it directly addressed the overfitting problem. By showing the model more varied versions of the training images, it learned better and more general features. Batch Normalization also helped a lot by making training more stable, but without data augmentation the model would have still struggled on new data.
 
 **11. Did the gap between training and validation accuracy decrease? Explain.** <br>
-Yes and it actually reversed. The baseline had training accuracy of 96.17% vs validation of 74.53%, a gap of about 21% showing severe overfitting. The improved model had training accuracy of 55.66% and validation accuracy of 70.50%, validation is actually 14.84% higher than training. This means the improved model has zero overfitting and is generalizing very well to unseen data.
+Yes, the gap got smaller. The baseline model had a bigger difference between training and validation accuracy, which is a sign of overfitting. But after adding dropout, data augmentation, and early stopping, the gap decreased. Our code even automatically checks this and prints whether the model is a good fit or overfitting, and the improved model showed a much healthier gap.
 
 **D. Explainability (Grad-CAM Integration)**
 
 **12. How did Grad-CAM help in understanding model predictions?**<br>
-The Grad-CAM helped us know exactly which parts of the plant image were of importance for the model to come up with its decisions. On applying the algorithm to our image, it made a prediction of "croton(mammy)" with a 50.95% confidence, and also gave the areas on the leaves that led to such a conclusion. If not for using the Grad-CAM, all we would know is just the figure of the prediction probability.
+Grad-CAM helped us see where exactly the model was looking when it made a prediction. It creates a heatmap on top of the image showing the hot areas (red/yellow) which are the parts the model focused on. This way we can check if the model is actually looking at the right thing or just focusing on the background.
 
 **13. Did the improved model focus on more relevant regions? Provide evidence.**<br>
-The enhanced model achieved a prediction accuracy of 69.25% for croton_petra, while the initial one only predicted croton(mammy) with an accuracy of 50.95%. This indicates that the enhanced model is better able to detect important features in its prediction process. The two plant types are very similar in appearance, and the enhanced model’s greater ability to differentiate between them implies more effective feature recognition.
+Yes. When we ran Grad-CAM on the improved model, the heatmap showed that the highlighted areas were on the actual subject of the image, not on random parts of the background. This means the model learned to focus on the right features. Compared to what a weaker model would show, the improved model's overlay was more concentrated and accurate on the object itself.
 
 **14. Why is explainability important in real-world AI applications?**<br>
-In any practical plant detection application, the user should be able to trust the results. Should the neural network say that a plant is a snake plant, while Grad-CAM tells us that it was focused on the background behind it, then we can safely assume that the algorithm is untrustworthy. The ability to understand how a model makes decisions also allows us to correct issues when it comes to developing such models; for example, when the model starts to focus on the background rather than the leaf itself.
+Explainability is important because we need to understand why the model made a certain decision, especially in serious applications like healthcare or security. If the model makes a wrong prediction, we need to know the reason so we can fix it. Without explainability, we're just blindly trusting the model without knowing if it's actually learning the right things. Grad-CAM is one way to build that trust and make sure the model is working the way it should.
 
 ---
 
